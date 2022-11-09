@@ -1,19 +1,15 @@
 input.onButtonPressed(Button.A, function () {
-    logging = true
+    enviar = true
     basic.showIcon(IconNames.Yes)
 })
-input.onButtonPressed(Button.B, function () {
-    logging = false
-    basic.showIcon(IconNames.No)
-})
-let logging = false
-logging = false
+let enviar = false
+enviar = false
 basic.showIcon(IconNames.No)
 radio.setGroup(1)
 loops.everyInterval(1000, function () {
-    if (logging) {
+    if (enviar) {
         basic.showIcon(IconNames.Happy)
-        radio.sendString("" + input.temperature() + " " + input.lightLevel() + " " + input.acceleration(Dimension.Y))
+        radio.sendString("" + input.temperature() + "," + input.lightLevel() + "," + input.acceleration(Dimension.Y))
         basic.clearScreen()
     }
 })
